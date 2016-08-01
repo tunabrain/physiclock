@@ -235,7 +235,9 @@ var Elevator = function(clock, ratio, x, y, width, height) {
     
     this.setRatio(ratio);
     
-    if (ratio > 0.5)
+    if (ratio >= 0.475 && ratio < 0.5)
+        clock.addDynamicBody(Sphere(20, 380, 10, 0.1));
+    else if (ratio > 0.5)
         clock.addDynamicBody(Sphere(0.5*(this.line1.s1.x + this.line2.s1.x), 0.5*(this.line1.s1.y + this.line2.s1.y) - 8, 10, 0.1));
 }
 Elevator.prototype.setRatio = function(ratio) {
