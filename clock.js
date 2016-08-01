@@ -333,6 +333,18 @@ var Clock = function(canvas) {
     
     this.setTime(new Date());
     this.reset();
+    
+    if (!this.ctx.ellipse) {
+        this.ctx.ellipse = function(cx, cy, rx, ry, rot, aStart, aEnd) {
+            this.save();
+            this.translate(cx, cy);
+            this.rotate(rot);
+            this.translate(-rx, -ry);
+            this.scale(rx, ry);
+            this.arc(1, 1, 1, aStart, aEnd, false);
+            this.restore();
+        }
+    }
 }
 Clock.prototype.addDynamicBody = function(body) {
     this.dynamicBodies.push(body);
