@@ -456,7 +456,7 @@ Clock.prototype.draw = function() {
     this.canvas.height = rect.height;
     
     var scale = Math.min(rect.width, rect.height)/415.0;
-    this.ctx.resetTransform();
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.translate(rect.width/2 - 200.0*scale, rect.height/2 - 200.0*scale)
     this.ctx.scale(scale, scale);
 
